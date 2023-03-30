@@ -39,18 +39,17 @@ function App() {
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
+    const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      auth.getContent(jwt).then((data) => {
+      auth.checkToken(jwt).then((data) => {
         if (data) {
           setLoggedIn(true);
-          setHeaderEmail(data.data.email);
+          setHeaderEmail(data.email);
           navigate("/");
         }
       });
     }
-    // eslint-disable-next-line
-  }, []);
+  }, [navigate]);
 
   function handleLogin({ email, password }) {
     return auth

@@ -25,20 +25,20 @@ export const authorize = (email, password) => {
     body: JSON.stringify({ email, password }),
   })
   .then(getResponse)
-  .then((token) => {
-    localStorage.setItem('jwt', token)
-    return token
+  .then((data) => {
+    localStorage.setItem('jwt', data.jwt)
+    return data;
   })
 };
 
-export const getContent = () => {
-  const token = localStorage.getItem('jwt')
+export const checkToken = () => {
+  const token = localStorage.getItem('jwt');
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
     },
   }).then(getResponse);
 };
