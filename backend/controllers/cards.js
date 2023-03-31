@@ -6,6 +6,7 @@ const NotFoundErr = require('../errors/NotFoundErr');
 const getCards = (req, res, next) => {
   cardSchema
     .find({})
+    .populate(['likes', 'owner'])
     .then((cards) => res.send(cards))
     .catch(next);
 };
@@ -67,6 +68,7 @@ const likeCard = (req, res, next) => {
         new: true,
       },
     )
+    .populate(['likes', 'owner'])
     .then((card) => {
       if (!card) {
         throw new NotFoundErr('Карточка с таким id не найдена');
@@ -98,6 +100,7 @@ const dislikeCard = (req, res, next) => {
         new: true,
       },
     )
+    .populate(['likes', 'owner'])
     .then((card) => {
       if (card) return res.send(card);
 

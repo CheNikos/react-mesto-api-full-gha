@@ -16,6 +16,7 @@ class Api {
     const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}/users/me`, {
       headers: { 
+        "content-type": "application/json",
         authorization: `Bearer ${token}`  
       },
     }).then((res) => {
@@ -27,6 +28,7 @@ class Api {
     const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}/cards`, {
       headers: { 
+        "content-type": "application/json",
         authorization: `Bearer ${token}`  
       },
     }).then((res) => {
@@ -39,6 +41,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: { 
+        "content-type": "application/json",
         authorization: `Bearer ${token}`  
       },
       body: JSON.stringify({
@@ -55,6 +58,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: { 
+        "content-type": "application/json",
         authorization: `Bearer ${token}`  
       },
       body: JSON.stringify({
@@ -71,6 +75,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: { 
+        "content-type": "application/json",
         authorization: `Bearer ${token}`  
       },
     }).then((res) => {
@@ -83,19 +88,12 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: { 
+        "content-type": "application/json",
         authorization: `Bearer ${token}`  
       },
     }).then((res) => {
       return this._checkResponse(res);
     });
-  }
-
-  changeLikeCardStatus(cardId, isLiked) {
-    if (isLiked) {
-      return this.putLike(cardId);
-    } else {
-      return this.deleteLike(cardId);
-    }
   }
 
   deleteLike(cardId) {
@@ -103,17 +101,20 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: { 
+        "content-type": "application/json",
         authorization: `Bearer ${token}`  
       },
     }).then((res) => {
       return this._checkResponse(res);
     });
   }
+
   editAvatar(object) {
     const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: { 
+        "content-type": "application/json",
         authorization: `Bearer ${token}`  
       },
       body: JSON.stringify({

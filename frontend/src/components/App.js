@@ -39,31 +39,28 @@ function App() {
   const [isInfoTolltip, setIsInfoTolltip] = useState(false);
 
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      auth.checkToken(jwt).then((data) => {
-        if (data) {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      auth.checkToken(token).then((data) => {
           setLoggedIn(true);
           setHeaderEmail(data.email);
           navigate("/");
-        }
       });
     }
-  }, [navigate]);
+    // eslint-disable-next-line
+  }, []);
 
   function handleLogin({ email, password }) {
     return auth
       .authorize(email, password)
       .then((data) => {
-        if (data.token) {
-          localStorage.setItem("jwt", data.token);
+          localStorage.setItem("jwt", data.jwt);
           setLoggedIn(true);
           setHeaderEmail(email);
           setUserData({
             email: email,
           });
           navigate("/");
-        }
       })
       .catch((err) => {
         setIsInfoTolltip(false);
@@ -132,17 +129,27 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    api
-      .changeLikeCardStatus(card._id, !isLiked)
-      .then((newCard) => {
-        setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
-        );
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-      });
+    const isLiked = card.likes.some((id) => id === currentUser._id);
+
+    if (!isLiked) {
+      api
+        .putLike(card._id, !isLiked)
+        .then((newCard) => {
+          setCards((state) =>
+            state.map((c) => (c._id === card._id ? newCard : c))
+          );
+        })
+        .catch((err) => console.log(err));
+    } else {
+      api
+        .deleteLike(card._id, !isLiked)
+        .then((newCard) => {
+          setCards((state) =>
+            state.map((c) => (c._id === card._id ? newCard : c))
+          );
+        })
+        .catch((err) => console.log(err));
+    }
   }
 
   function handleCardDelete(card) {
