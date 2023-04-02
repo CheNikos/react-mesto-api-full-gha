@@ -1,5 +1,5 @@
 const allowedCors = [
-  'http://localhost:3000',
+  'http://mesto.parkharidi.nomoredomains.work',
 ];
 
 const corsErr = (req, res, next) => {
