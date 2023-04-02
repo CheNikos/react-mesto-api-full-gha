@@ -1,7 +1,7 @@
 {
-  "name": "react-mesto-auth",
+  "name": "react-mesto-api-full-gha",
   "version": "0.1.0",
-  "homepage": "https://chenikos.github.io/react-mesto-auth/",
+  "homepage": "http://mesto.parkharidi.nomoredomains.work/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
