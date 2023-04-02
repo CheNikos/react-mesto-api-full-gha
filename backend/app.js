@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { login, createUser } = require('./controllers/users');
 
@@ -23,6 +24,8 @@ app.use(corsErr);
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const { PORT = 3000 } = process.env;
+
+app.use(requestLogger);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
@@ -49,6 +52,8 @@ app.use(routeCards);
 app.use((req, res, next) => {
   next(new NotFoundErr('Такой страницы не существует'));
 });
+
+app.use(errorLogger);
 
 app.use(errors());
 
