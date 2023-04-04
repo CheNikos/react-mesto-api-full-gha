@@ -212,7 +212,7 @@ function App() {
     localStorage.removeItem("jwt");
     setHeaderEmail("");
     setLoggedIn(false);
-    navigate("/sign-in");
+    navigate("/signin");
   }
 
   return (
