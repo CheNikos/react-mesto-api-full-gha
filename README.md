@@ -10,9 +10,9 @@
 
 #### IP-адрес 51.250.21.42
 
-#### Frontend http://mesto.parkharidi.nomoredomains.work/
+#### Frontend https://mesto.parkharidi.nomoredomains.work/
 
-#### Backend http://api.mesto.parkharidi.nomoredomains.work/
+#### Backend https://api.mesto.parkharidi.nomoredomains.work/
 
 ## Используемые технологии
 
