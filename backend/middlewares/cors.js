@@ -1,5 +1,6 @@
 const allowedCors = [
-  'mesto.parkharidi.nomoredomains.work',
+  'https://mesto.parkharidi.nomoredomains.work',
+  'http://mesto.parkharidi.nomoredomains.work',
 ];
 
 const corsErr = (req, res, next) => {
