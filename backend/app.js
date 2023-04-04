@@ -35,7 +35,7 @@ app.get('/crash-test', () => {
 });
 
 app.get('/', (req, res) => {
-  res.send('root');
+  res.send('/signup');
 });
 
 app.post('/signin', celebrate({
