@@ -7,6 +7,8 @@ const BadRequestErr = require('../errors/BadRequestErr');
 const UnauthorizedErr = require('../errors/UnauthorizedErr');
 const NotFoundErr = require('../errors/NotFoundErr');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 const createUser = (req, res, next) => {
   const {
     name, about, avatar, email, password,
@@ -49,7 +51,7 @@ const login = (req, res, next) => {
       throw new UnauthorizedErr('Пользователь не найден');
     }))
     .then((user) => {
-      const jwt = jsonwebtoken.sign({ _id: user._id }, 'secret-key', { expiresIn: '7d' });
+      const jwt = jsonwebtoken.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
       res.send({ jwt });
     })
     .catch(next);
