@@ -34,6 +34,10 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
+app.get('/', (req, res) => {
+  res.send('root');
+});
+
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
