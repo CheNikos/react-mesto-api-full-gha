@@ -8,11 +8,11 @@
 
 ## Ссылки на проект
 
-#### IP 51.250.21.42
+IP 51.250.21.42
 
-#### Frontend https://mesto.parkharidi.nomoredomains.work
+Frontend https://mesto.parkharidi.nomoredomains.work
 
-#### Backend https://api.mesto.parkharidi.nomoredomains.work
+Backend https://api.mesto.parkharidi.nomoredomains.work
 
 ## Используемые технологии
 
