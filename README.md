@@ -1,10 +1,10 @@
 [![Tests](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml/badge.svg)](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml)
 # react-mesto-api-full-gha
-## Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: 
-#### Авторизации и регистрации пользователей. 
-#### Операции с карточками и пользователями.  
+### Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: 
+Авторизации и регистрации пользователей. 
+Операции с карточками и пользователями.  
   
-### Адрес репозитория: https://github.com/CheNikos/react-mesto-api-full-gha
+#### Адрес репозитория: https://github.com/CheNikos/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
@@ -16,9 +16,9 @@ Backend https://api.mesto.parkharidi.nomoredomains.work
 
 ## Используемые технологии
 
-### Frontend: JS, REACT, HTML5, CSS3
+#### Frontend: JS, REACT, HTML5, CSS3
 
-### Backend: MONGODB, NODE.JS, EXPRESS
+#### Backend: MONGODB, NODE.JS, EXPRESS
 
 ## Инструкция по установке 
 
