@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const { celebrate, Joi } = require('celebrate');
+const { URL_CHECK } = require('../utils/constants');
 
 const {
   getUsers,
@@ -31,7 +32,7 @@ router.patch('/users/me/avatar', celebrate({
     avatar: Joi
       .string()
       .required()
-      .pattern(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/),
+      .pattern(URL_CHECK),
   }),
 }), setUserAvatar);
 

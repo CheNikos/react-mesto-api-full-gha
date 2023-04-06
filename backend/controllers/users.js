@@ -19,7 +19,7 @@ const createUser = (req, res, next) => {
     .then((hash) => userSchema.create({
       name, about, avatar, email, password: hash,
     }))
-    .then(() => res.send({
+    .then(() => res.status(201).send({
       name,
       about,
       avatar,

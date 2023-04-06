@@ -3,9 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
-const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { URL_CHECK } = require('./utils/constants');
 
 const { login, createUser } = require('./controllers/users');
 
@@ -14,7 +14,7 @@ const corsErr = require('./middlewares/cors');
 const app = express();
 app.use(cors());
 app.use(helmet());
-app.use(bodyParser.json());
+app.use(express.json());
 
 const auth = require('./middlewares/auth');
 const routeUsers = require('./routes/users');
@@ -45,7 +45,7 @@ app.post('/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().pattern(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/),
+    avatar: Joi.string().pattern(URL_CHECK),
     email: Joi.string().required().email(),
     password: Joi.string().required(),
   }),
