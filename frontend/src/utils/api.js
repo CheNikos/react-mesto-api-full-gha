@@ -127,7 +127,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.mesto.parkharidi.nomoredomains.work/"
+  baseUrl: "https://api.mesto.parkharidi.nomoredomains.work"
 });
 
 export default api;
