@@ -64,13 +64,7 @@ const getCurrentUser = (req, res, next) => {
 
       throw new NotFoundErr('Пользователь с таким id не найден');
     })
-    .catch((err) => {
-      if (err) {
-        next(new BadRequestErr('Передан некорректный id'));
-      } else {
-        next(err);
-      }
-    });
+    .catch(next);
 };
 
 const getUsers = (req, res, next) => {
